@@ -16,6 +16,9 @@ class PlayState extends FlxState
 	private var pioneer:Pioneer;
 	private var position:Array<FlxPoint>;
 	
+	public var isPlaying:Bool = false;
+	public var gameplay:Gameplay;
+	
 	override public function create():Void
 	{
 		super.create();
@@ -25,10 +28,13 @@ class PlayState extends FlxState
 						new FlxPoint(FlxG.width - FlxG.width * 0.2 - 17.5, FlxG.height - FlxG.height * 0.2 - 17.5),
 						new FlxPoint(FlxG.width - FlxG.width * 0.2 - 17.5, 0 + FlxG.height * 0.2 - 17.5)];
 						
-		/*var canvas = new FlxSprite();
-		canvas.makeGraphic(FlxG.width, FlxG.height, FlxColor.TRANSPARENT, true);
-		canvas.drawPolygon(position, FlxColor.WHITE);
-		add(canvas);*/
+		/* var canvas = new FlxSprite();
+		 * canvas.makeGraphic(FlxG.width, FlxG.height, FlxColor.TRANSPARENT, true);
+		 * canvas.drawPolygon(position, FlxColor.WHITE);
+		 * add(canvas);* 
+		 **/
+		
+		 gameplay = new Gameplay();
 						
 		for (coordinate in position)
 		{
@@ -36,6 +42,11 @@ class PlayState extends FlxState
 			add(pioneer);
 		}
 	
+	}
+	
+	public function playStatus():Bool
+	{
+		return gameplay.isPlaying;
 	}
 
 	override public function update(elapsed:Float):Void
