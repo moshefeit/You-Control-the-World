@@ -37,7 +37,6 @@ class Pioneer extends FlxSprite
 		
 		// Direction
 		initFacing(Random.fromArray(directions));
-		trace(direction);
 	}
 	
 	/**** PUBLIC ****/
@@ -105,13 +104,13 @@ class Pioneer extends FlxSprite
 	{
 		handleInput();
 		
-		if (FlxG.keys.enabled == true)
+		if (FlxG.keys.enabled == true && PlayState.isPlaying == true && FlxG.overlap(this, PlayState.ball) == false)
 		{
 			var bagofNumber:Array<Int> = [];
 			
 			for ( i in 0...2)
 			{
-				bagofNumber.insert(bagofNumber.length, Random.int(1, 500));
+				bagofNumber.insert(bagofNumber.length, Random.int(1, 250));
 			}
 			
 			if (bagofNumber.indexOf(Random.int(1, 500)) != -1)
